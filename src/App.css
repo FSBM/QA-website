@@ -1,0 +1,106 @@
+@import url('https://fonts.cdnfonts.com/css/google-sans');
+ @import url('https://fonts.cdnfonts.com/css/monaco');
+
+                
+
+body{
+  background-color: #242424;
+  font-family:  'Product Sans', sans-serif;
+  color: #fff;
+  background: url('./assets/9070324cdfc07c68d60eed0c39e77573.gif') no-repeat center center fixed;
+  width: 100vw;
+  overflow-x: hidden;
+
+
+}
+
+.nav{
+  font-family: 'Product Sans Medium', sans-serif;
+  backdrop-filter: blur(10px);
+  font-size: 4rem;
+  text-align: center;
+  width: 100vw;
+  height: 5rem;
+  margin-top: 0px;
+  border-radius: 0px 0px 40px 40px;
+  border-bottom: 1px solid #c71d48;
+  position: fixed;
+  TOP:0;
+  z-index: 100;
+}
+.container{
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+
+}
+.input-container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 8rem;
+  margin-bottom: 5rem;
+  padding-bottom: 20rem;
+}
+.input-box{
+  width: 90vw;
+  height: 10vw;
+  backdrop-filter: blur(10px);
+  background-color: transparent;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  border: 1px solid #0a1826;
+  margin: 5px;
+  color: #fff;
+  font-family: 'Monaco', monospace;
+}
+textarea{
+  vertical-align: top; 
+  padding-left: 15px;
+}
+
+.answer{
+  height: 30vw;
+}
+
+submit-topic{
+  height: 30px !important;
+}
+.submit{
+  padding: 10px 15px;
+  background-color: #0a1826;
+  border: 1px solid #c71d4846;
+  border-radius: 30px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+}
+.submit:hover{
+  background-color: #c71d48cd;
+  border: 1px solid rgba(255, 255, 255, 0.675);
+}
+
+.formatted-text {
+  text-align: left;
+  margin: 20px auto; 
+  font-family: 'Monaco', monospace; 
+  font-size: 0.6rem;
+  padding: 10px; 
+  width: 90vw;
+  line-height: 1.8; 
+  white-space: pre-line;
+  background-color: #0a1826;
+  border: 1px solid #c71d4846;
+  border-radius: 10px;
+}
