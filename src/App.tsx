@@ -5,7 +5,6 @@ import Asection from "./components/Asection";
 import SubmitTopic from "./components/SubmitTopic";
 import TopicQ from "./components/topicQ";
 import { DotLoader } from "react-spinners";
-import Button from "./components/button";
 import QALanding from "./components/middleIntro";
 import { MdCloseFullscreen } from "react-icons/md";
 
