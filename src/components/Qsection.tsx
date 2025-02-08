@@ -6,6 +6,7 @@ interface Props {
     setTopics: (value: string) => void;
     displayProp:string;
     children?: React.ReactNode;
+    
 }
 
 const Qsection: React.FC<Props> = ({ topics, setTopics, displayProp,children }) => {
