@@ -5,11 +5,9 @@ import Asection from "./components/Asection";
 import SubmitTopic from "./components/SubmitTopic";
 import TopicQ from "./components/topicQ";
 import { DotLoader } from "react-spinners";
-import Button from "./components/button";
-import { DiVim } from "react-icons/di";
 import QALanding from "./components/middleIntro";
 import { MdCloseFullscreen } from "react-icons/md";
-import { Pointer } from "lucide-react";
+
 
 function App() {
   interface QandA {
@@ -17,15 +15,25 @@ function App() {
     As: string;
   }
 
+  
+
   const [topics, setTopics] = useState("");
   const [topicQ, setTopicQ] = useState("");
   const [answer, setAnswer] = useState("");
   const [topicA, setTopicA] = useState("");
-  const [QandA, setQandA] = useState<QandA>({ Qs: "", As: "" });
   const [topicDisplay, setTopicDisplay] = useState("block");
   const [ansDisplay, setAnsDisplay] = useState("block");
-  const [QandAList, setQandAList] = useState<QandA[]>([]);
+  const [QandAList, setQandAList] = useState<QandA[]>(() => {
+    const savedHistory = localStorage.getItem("qaHistory");
+    return savedHistory ? JSON.parse(savedHistory) : [];
+  });
   const [SideOpen , setSideOpen] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("qaHistory", JSON.stringify(QandAList));
+  }, [QandAList]);
+
+  
 
   const apiKey: string = import.meta.env.VITE_GOOGLE_API_KEY;
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
