@@ -1,4 +1,3 @@
-import { Children, useEffect, useState } from "react";
 import React from "react";
 
 interface Props {
@@ -6,6 +5,7 @@ interface Props {
     setTopics: (value: string) => void;
     displayProp:string;
     children?: React.ReactNode;
+    
 }
 
 const Qsection: React.FC<Props> = ({ topics, setTopics, displayProp,children }) => {
