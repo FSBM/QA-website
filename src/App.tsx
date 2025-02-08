@@ -7,6 +7,9 @@ import TopicQ from "./components/topicQ";
 import { DotLoader } from "react-spinners";
 import Button from "./components/button";
 import { DiVim } from "react-icons/di";
+import QALanding from "./components/middleIntro";
+import { MdCloseFullscreen } from "react-icons/md";
+import { Pointer } from "lucide-react";
 
 function App() {
   interface QandA {
@@ -22,12 +25,14 @@ function App() {
   const [topicDisplay, setTopicDisplay] = useState("block");
   const [ansDisplay, setAnsDisplay] = useState("block");
   const [QandAList, setQandAList] = useState<QandA[]>([]);
+  const [SideOpen , setSideOpen] = useState(false);
 
   const apiKey: string = import.meta.env.VITE_GOOGLE_API_KEY;
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
   const handleSubmitTopic = async () => {
     setTopicDisplay("none");
+
     console.log(topics);
     const payload = {
       contents: [
@@ -65,7 +70,7 @@ function App() {
         {
           parts: [
             {
-              text: `I had a question on the topic of ${topicQ} and my answer was ${answer}. Check if the answer is correct, correct any mistakes, provide the corrected answer with marks mentioned, and give a final score out of 100. Return the response in plain text without markdown symbols.
+              text: `I had a question on the topic of ${topicQ} and my answer was ${answer}. First Provide the answer for the questions, then give score for my question in total out of 100. Return the response in plain text without markdown symbols.
               even if the response is is incorrect and does not address any of the five questions. It is nonsensical in this context Always provide the correct answer`
 
             }
@@ -91,11 +96,12 @@ function App() {
 
   return (
     <div className="App">
-      <div className="nav"> Q & A</div>
+      <div className="nav bg-gray-800 bg-opacity-20"> Q & A</div>
 
-      <div className="flex flex-col lg:flex-row h-screen mt-16 overflow-auto">
+      <div className="flex flex-col lg:flex-row h-[100vh] pt-10 overflow-hidden">
         {topicDisplay === "block" ? (
-          <div className="flex flex-col w-full min-h-screen p-5 overflow-auto pb-[150px] items-center">
+          <div className="flex flex-col w-full min-h-screen p-5 overflow-auto pb-[150px] items-center no-scrollbar">
+            {topicQ==="" ? <QALanding /> :null }
             <div className="relative lg:fixed bottom-5 flex items-end gap-1 z-50">
               <Qsection topics={topics} setTopics={setTopics} displayProp={topicDisplay}>
                 <SubmitTopic handleSubmitTopic={handleSubmitTopic} />
@@ -120,9 +126,25 @@ function App() {
           </div>
         )}
 
-        {QandAList.length > 0 && (
-          <div className="flex flex-col w-full lg:w-[50vw] min-h-screen border-[--border-color] border-l-[1px] overflow-auto">
-            <h1 className="text-2xl text-center font-medium">History</h1>
+        {SideOpen ?null : 
+        <div className="rotate-180 fixed items-center align-middle right-5 top-[50%]">
+        <button type="button" 
+            onClick={()=>{setSideOpen(true)}} 
+            className="text-white bg-[--secondary-violet-color] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-[--secondary-violet-color] dark:hover:bg-[--secondary-violet-color] dark:focus:ring-blue-800
+            shadow-md shadow-indigo-500
+            ">
+                <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                </svg>
+                <span className="sr-only"></span>
+            </button>
+        </div>}
+        {(SideOpen) && (
+          <div className="flex flex-col pt-5 w-full lg:w-[50vw] min-h-screen border-[--border-color] border-l-[1px] overflow-auto">
+            <div className="flex justify-between items-center p-5 border-b-gray-500 border-b-[1px]">
+            <h1 className="text-1xl text-center font-normal font-mono">History</h1>
+            <button><MdCloseFullscreen  size={20} fill="white" onClick={()=>{setSideOpen(false)}}/></button>
+            </div>
             {QandAList.map((QandA, index) => (
               <div key={index} className="flex flex-col p-6 border-[--border-color] border-b-[1px]">
                 <div className="flex flex-col">
