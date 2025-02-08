@@ -65,7 +65,9 @@ function App() {
         {
           parts: [
             {
-              text: `I had a question on the topic of ${topicQ} and my answer was ${answer}. Check if the answer is correct, correct any mistakes, provide the corrected answer with marks mentioned, and give a final score out of 100. Return the response in plain text without markdown symbols.`
+              text: `I had a question on the topic of ${topicQ} and my answer was ${answer}. Check if the answer is correct, correct any mistakes, provide the corrected answer with marks mentioned, and give a final score out of 100. Return the response in plain text without markdown symbols.
+              even if the response is is incorrect and does not address any of the five questions. It is nonsensical in this context Always provide the correct answer`
+
             }
           ],
         },
@@ -120,6 +122,7 @@ function App() {
 
         {QandAList.length > 0 && (
           <div className="flex flex-col w-full lg:w-[50vw] min-h-screen border-[--border-color] border-l-[1px] overflow-auto">
+            <h1 className="text-2xl text-center font-medium">History</h1>
             {QandAList.map((QandA, index) => (
               <div key={index} className="flex flex-col p-6 border-[--border-color] border-b-[1px]">
                 <div className="flex flex-col">
