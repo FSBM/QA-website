@@ -1,23 +1,32 @@
-import { useEffect, useState } from "react";
+import { Children, useEffect, useState } from "react";
 import React from "react";
 
 interface Props {
     topics: string;
     setTopics: (value: string) => void;
+    displayProp:string;
+    children?: React.ReactNode;
 }
 
-const Qsection: React.FC<Props> = ({ topics, setTopics }) => {
+const Qsection: React.FC<Props> = ({ topics, setTopics, displayProp,children }) => {
     return (
-        <div className="q-section">
-            <h3>Type Your Topic Here</h3>
-            <textarea
+        <div className="input-box q-section flex justify-center items-center gap-2">
+
+            <input
                 value={topics}
                 onChange={(e) => setTopics(e.target.value)}
-                className="input-box"
+                className="w-[40vw] p-3 bg-[#212121]" 
+                style={{display:displayProp}}
                 placeholder="Type Your Topic Here"
                 name=""
                 id=""
+
             />
+            <span>
+                {children}
+            </span>
+            
+            
         </div>
     );
 }

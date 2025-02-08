@@ -1,3 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root{
+  --primary-background-color: rgb(23 23 23);
+  --secondary-background-color: #1f1f1f;
+  --primary-text-color: #fff;
+  --secondary-violet-color: #4f45e4;
+  --border-color:rgb(129 129 129);
+
+}
+
 body{
   background-color: #242424;
   color: #fff;

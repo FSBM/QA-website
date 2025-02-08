@@ -12,7 +12,7 @@ const TopicQ: React.FC<Props> = ({topicQ}) => {
         return <div></div>
     }
         
-    return <div className="topicQ formatted-text">
+    return <div className="topicQ formatted-text w-full">
         <h2>
             {topicQ}
         </h2>
